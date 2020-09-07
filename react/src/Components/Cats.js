@@ -1,5 +1,6 @@
 import React ,{Component}from 'react';
-
+import Posting from './PostNewImg'
+import FileUpload from "./UpLoadImage"
 class Cats extends React.Component{
     constructor(props){
         super(props)
@@ -25,7 +26,8 @@ class Cats extends React.Component{
            Age:{' '}{cat.cat_age}<br/>
            </div>
          ))} 
-       
+           {/* <Posting /> */}
+           <FileUpload/>
          </div>
         )
     }

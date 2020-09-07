@@ -1,10 +1,4 @@
 .petList{
   display:inline-flex;
-  align-content: baseline;
   height:600px;
-}
-.petList>div{
-  background-color: bisque;
-  flex-direction: column;
-  align-content: stretch;
 }
