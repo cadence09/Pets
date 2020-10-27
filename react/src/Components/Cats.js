@@ -1,6 +1,8 @@
 import React ,{Component}from 'react';
 import Posting from './PostNewImg'
-import FileUpload from "./UpLoadImage"
+// import FileUpload from "./UpLoadImage"
+import CatInput from "./Input";
+import './../App.css'
 class Cats extends React.Component{
     constructor(props){
         super(props)
@@ -18,16 +20,17 @@ class Cats extends React.Component{
   
         return (
             <div>
-           
+           <div className="catInfo">
             {this.state.cats.map(cat=>(
-           <div>
-           <img src={cat.cat_profile_pic} heigth='100' width='100'></img><br/>
+           <div className="cat">
+           <img src={cat.cat_profile_pic} heigth='250' width='250'></img><br/>
             Name:{' '}{cat.cat_name}<br/>
            Age:{' '}{cat.cat_age}<br/>
            </div>
          ))} 
+         </div>
            {/* <Posting /> */}
-           <FileUpload/>
+           <CatInput/>
          </div>
         )
     }

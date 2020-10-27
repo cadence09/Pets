@@ -2,3 +2,11 @@
   display:inline-flex;
   height:600px;
 }
+.catInfo,.dogInfo{
+  display:inline-flex;
+
+}
+
+.cat,.dog{
+  margin: 3%;
+}

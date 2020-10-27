@@ -1,7 +1,9 @@
 const express=require("express")
 const app=express()
+const path = require("path")
 const fileUpload = require('express-fileupload');
 require('dotenv').config()
+const cors = require('cors')
 const bodyParser=require('body-parser');
 const port =3001;
 var pgp=require('pg-promise')(/*options*/)
@@ -11,9 +13,8 @@ var db=pgp(process.env.REACT_APP_DATABASECONFIG)
 //     extend:true
 // }))
 
-// app.use(bodyParser.json())
-app.use(express.static('public'))
-app.use(fileUpload())
+app.use(bodyParser.json())
+app.use(cors());
 
 app.get('/getDogs', function(req,res){
     db.any("SELECT * FROM dogs")
@@ -29,7 +30,7 @@ app.get('/getDogs', function(req,res){
 app.get("/getCats",function(req,res){
     db.any("SELECT * FROM cats")
         .then((data)=>{
-            console.log("dd",data)
+            // console.log("dd",data)
             res.send(data)
         })
         .catch(error=>{
@@ -38,22 +39,39 @@ app.get("/getCats",function(req,res){
         })
 })
 
-app.post("/getCats",function(req,res){
-    if(!req.files){
-        return res.status(500).send({msg:"file is not found"})
-    }
-        // accessing the file
-        const myFile = req.files.file;
-        console.log("myImage",myFile)
-        myFile.mv(`${__dirname}/public/${myFile.name}`, function (err) {
-            if (err) {
-                console.log(err)
-                return res.status(500).send({ msg: "Error occured" });
-            }
-            // returing the response with file path and name
-            return res.send({name: myFile.name, path: `/${myFile.name}`});
-        });
-    // db.one('INSERT INTO cats values $1',[])
+app.post("/upLoad",function(req,res){
+    console.log("req",req.body)
+    let catValue=[
+        req.body.catName,
+        req.body.catOwner,
+        req.body.catAge,
+        req.body.image
+    ]
+    console.log("val",value)
+    db.none("INSERT INTO cats(cat_name,owner_name,cat_age,cat_profile_pic) VALUES($1,$2,$3,$4)",catValue)
+        .then(()=>{
+            console.log("success")
+        })
+        .catch(error=>{
+            console.log("error",error)
+        })
+})
+
+app.post("/upLoadDog",function(req,res){
+    console.log("dog req",req.body)
+    let dogValue=[
+        req.body.dogName,
+        req.body.dogOwner,
+        req.body.dogAge,
+        req.body.image
+    ]
+    db.none("INSERT INTO dogs (dog_name,owner_name, dog_age,dog_profile_pic) VALUES ($1,$2,$3,$4)", dogValue)
+    .then(()=>{
+        console.log("success")
+    })
+    .catch(error=>{
+        console.log("error",error)
+    })
 })
 
 app.listen(port,function(){
