@@ -63,9 +63,10 @@ app.post("/upLoadDog",function(req,res){
         req.body.dogName,
         req.body.dogOwner,
         req.body.dogAge,
-        req.body.image
+        req.body.image,
+        req.body.moment
     ]
-    db.none("INSERT INTO dogs (dog_name,owner_name, dog_age,dog_profile_pic) VALUES ($1,$2,$3,$4)", dogValue)
+    db.none("INSERT INTO dogs (dog_name,owner_name, dog_age,dog_profile_pic,moment) VALUES ($1,$2,$3,$4,$5)", dogValue)
     .then(()=>{
         console.log("success")
     })

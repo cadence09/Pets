@@ -4,7 +4,7 @@ class DogInput extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            dog:{dogName:"",dogAge:"",dogOwner:""},
+            dog:{dogName:"",dogAge:"",dogOwner:"",moment:""},
            dogImage:""
         
         }
@@ -61,18 +61,22 @@ const newData={
     render(){
      
         return (
-            <div>
-                 <div className='newDogBuddy'>
-                    <label htmlFor="dogName">Dog Name:</label>
+            <div >
+            
+                    <label htmlFor="dogName">Dog Name:</label><br/>
                         <input type="text" name="dogName" id="dogName" onChange={this.handleName("dog")} value={this.state.dog.dogName}/><br/> 
-                     <label htmlFor='dogAge'>Dog Age:</label>
+                     <label htmlFor='dogAge'>Dog Age:</label><br/>
                         <input type='text' name="dogAge" id='dogAge' onChange={this.handleName("dog")} value={this.state.dog.dogAge}/><br/>
-                    <label htmlFor='dogOwner'>Owner:</label>
+                    <label htmlFor='dogOwner'>Owner:</label><br/>
                         <input type="text" name="dogOwner" id="dogOwner" onChange={this.handleName("dog")} value={this.state.dog.dogOwner}/><br/> 
+                        <label htmlFor="moment">Intersting Moment :</label><br/>
+                        <textarea name="moment" id="moment" cols="80" rows="5" value={this.state.dog.moment} onChange={this.handleName("dog")}></textarea>
+                      
                 <input type="file" onChange={this.handleImageChange}  />
                 <button onClick={this.handleSubmit} >Submit</button>
-                 </div>
-                 <img src={this.state.dogImage} alt="" />
+               
+                
+               
                  
             </div>
         )

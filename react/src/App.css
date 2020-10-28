@@ -6,7 +6,13 @@
   display:inline-flex;
 
 }
+.container{
+  display:flex;
+}
+.puppy{
+  flex-direction: column;
 
+}
 .cat,.dog{
   margin: 3%;
 }

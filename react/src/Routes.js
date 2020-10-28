@@ -4,6 +4,7 @@ import history from './history';
 import Home from './Components/Home';
 import Dogs from './Components/Dogs';
 import Cats from './Components/Cats';
+import Profile from './Components/Profiles'
 export default class Routes extends Component {
     render() {
         return (
@@ -12,6 +13,7 @@ export default class Routes extends Component {
                     <Route path="/" exact component={Home} />
                     <Route path='/Dogs' component={Dogs} />
                     <Route path='/Cats' component={Cats}/>
+                    <Route path='/Profile' component={Profile}/>
                 </Switch>
             </Router>
         )

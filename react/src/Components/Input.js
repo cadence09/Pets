@@ -69,7 +69,8 @@ const newData={
                         <input type='text' name="catAge" id='catAge' onChange={this.handleName("cat")} value={this.state.cat.catAge}/><br/>
                     <label htmlFor='catOwner'>Owner:</label>
                         <input type="text" name="catOwner" id="catOwner" onChange={this.handleName("cat")} value={this.state.cat.catOwner}/><br/> 
-                <input type="file" onChange={this.handleImageChange}  />
+                        
+                <input type="file" onChange={this.handleImageChange}  /> 
                 <button onClick={this.handleSubmit} className="upButton" >Submit</button>
                  </div>
                  <img src={this.state.catImage} alt="" />
