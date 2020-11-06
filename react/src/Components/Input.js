@@ -4,7 +4,7 @@ class CatInput extends React.Component{
     constructor(props){
         super(props)
         this.state={
-            cat:{catName:"",catAge:"",catOwner:""},
+            cat:{catName:"",catAge:"",catOwner:"",moment:""},
            catImage:""
         
         }
@@ -62,18 +62,20 @@ const newData={
         // console.log(this.state.file)
         return (
             <div>
-                 <div className='newBuddy'>
+                
                     <label htmlFor="catName">Cat Name:</label>
                         <input type="text" name="catName" id="catName" onChange={this.handleName("cat")} value={this.state.cat.catName}/><br/> 
                      <label htmlFor='catAge'>Cat Age:</label>
                         <input type='text' name="catAge" id='catAge' onChange={this.handleName("cat")} value={this.state.cat.catAge}/><br/>
                     <label htmlFor='catOwner'>Owner:</label>
                         <input type="text" name="catOwner" id="catOwner" onChange={this.handleName("cat")} value={this.state.cat.catOwner}/><br/> 
-                        
+                        <label htmlFor="moment">Intersting Moment :</label><br/>
+                        <textarea name="moment" id="moment" cols="80" rows="5" value={this.state.cat.moment} onChange={this.handleName("cat")}></textarea>
+                      
                 <input type="file" onChange={this.handleImageChange}  /> 
                 <button onClick={this.handleSubmit} className="upButton" >Submit</button>
-                 </div>
-                 <img src={this.state.catImage} alt="" />
+                 <img src={this.state.catImage}/>
+                    
                  
             </div>
         )
