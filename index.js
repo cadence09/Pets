@@ -13,7 +13,7 @@ var db=pgp(process.env.REACT_APP_DATABASECONFIG)
 //     extend:true
 // }))
 
-app.use(bodyParser.json())
+app.use(bodyParser.json({limit: '50mb'}))
 app.use(cors());
 
 app.get('/getDogs', function(req,res){
@@ -45,10 +45,11 @@ app.post("/upLoad",function(req,res){
         req.body.catName,
         req.body.catOwner,
         req.body.catAge,
-        req.body.image
+        req.body.image,
+        req.body.moment
     ]
-    console.log("val",value)
-    db.none("INSERT INTO cats(cat_name,owner_name,cat_age,cat_profile_pic) VALUES($1,$2,$3,$4)",catValue)
+
+    db.none("INSERT INTO cats(cat_name,owner_name,cat_age,cat_profile_pic,moments) VALUES($1,$2,$3,$4,$5)",catValue)
         .then(()=>{
             console.log("success")
         })
